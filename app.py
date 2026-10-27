@@ -35,6 +35,10 @@ except Exception as e:
 def index():
     return send_from_directory('static', 'index.html')
 
+@app.route('/portfolio')
+def portfolio():
+    return send_from_directory('static', 'portfolio.html')
+
 @app.route('/api/data', methods=['GET'])
 def get_current_data():
     """Returns the current scored dataset and summary KPIs."""

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Case Study: ChurnGuard AI | Sachin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .code-font { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-indigo-500 selection:text-white">
+
+  <!-- Navigation -->
+  <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <span class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white text-sm">S</span>
+        <span class="font-bold text-slate-200">Sachin <span class="text-indigo-400 font-normal">| Machine Learning & Full-Stack</span></span>
+      </div>
+      <div class="flex items-center space-x-4 text-xs font-semibold">
+        <a href="/" class="text-slate-400 hover:text-white transition">Live Platform</a>
+        <a href="https://github.com/tamballesachin7-star/churnguard" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition flex items-center space-x-1.5">
+          <span>GitHub Repo</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="py-16 px-6 max-w-5xl mx-auto border-b border-slate-800">
+    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono font-medium mb-4">
+      <span>Featured Engineering Case Study</span>
+      <span>•</span>
+      <span>AI / Machine Learning / SaaS</span>
+    </div>
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+      ChurnGuard AI: Universal Customer Churn Prediction & Retention Intelligence
+    </h1>
+    <p class="text-lg text-slate-400 mt-4 max-w-3xl leading-relaxed">
+      An enterprise-grade Early Warning System that prevents customer attrition before it happens. Built with an automated machine learning (AutoML) pipeline capable of ingesting any company's dataset, calculating explainable customer health scores, and triggering targeted retention playbooks.
+    </p>
+
+    <!-- Project Badges -->
+    <div class="flex flex-wrap gap-2 mt-6 text-xs font-medium text-slate-300">
+      <span class="px-3 py-1 rounded-md bg-slate-800 border border-slate-700">Python 3.11</span>
+      <span class="px-3 py-1 rounded-md bg-slate-800 border border-slate-700">Scikit-Learn (Ensemble)</span>
+      <span class="px-3 py-1 rounded-md bg-slate-800 border border-slate-700">AutoML Ingestion Engine</span>
+      <span class="px-3 py-1 rounded-md bg-slate-800 border border-slate-700">Flask REST API</span>
+      <span class="px-3 py-1 rounded-md bg-slate-800 border border-slate-700">Pandas & NumPy</span>
+      <span class="px-3 py-1 rounded-md bg-slate-800 border border-slate-700">Tailwind CSS & Chart.js</span>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <div class="text-2xl font-bold text-indigo-400">0.912</div>
+        <div class="text-xs text-slate-400 mt-0.5">Model ROC-AUC Score</div>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <div class="text-2xl font-bold text-emerald-400">88.5%</div>
+        <div class="text-xs text-slate-400 mt-0.5">Prediction Accuracy</div>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <div class="text-2xl font-bold text-amber-400">100%</div>
+        <div class="text-xs text-slate-400 mt-0.5">Universal Schema Ingestion</div>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <div class="text-2xl font-bold text-pink-400">&lt;50ms</div>
+        <div class="text-xs text-slate-400 mt-0.5">Inference Latency</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Deep Dive Content -->
+  <main class="py-12 px-6 max-w-5xl mx-auto space-y-12">
+
+    <!-- 1. The Problem -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+        <span class="text-rose-400">01.</span>
+        <span>The Problem & Industry Challenge</span>
+      </h2>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Customer churn is one of the highest cost drivers for subscription and SaaS businesses. Most companies react <em>after</em> a cancellation email arrives or an account fails to renew — when it is already too late to recover the client. 
+      </p>
+      <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-300 space-y-2">
+        <div class="flex items-start space-x-2">
+          <span class="text-rose-400 font-bold">•</span>
+          <span><strong>Silent Activity Decay:</strong> Over 60% of churning clients gradually decrease seat utilization and logins weeks before cancellation without filing complaints.</span>
+        </div>
+        <div class="flex items-start space-x-2">
+          <span class="text-rose-400 font-bold">•</span>
+          <span><strong>Data Heterogeneity:</strong> Different companies record usage metrics in drastically different schemas (e.g., Telecom vs. B2B Cloud vs. E-Commerce). Most legacy ML tools require months of custom data engineering for each new dataset.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. The Technical Solution -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+        <span class="text-indigo-400">02.</span>
+        <span>Architectural Innovation: Universal AutoML</span>
+      </h2>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        To address data heterogeneity, ChurnGuard AI incorporates a <strong>Universal Dataset Processor</strong> that accepts raw CSV files from any organization and automatically builds a tailored churn model:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="font-bold text-white text-sm">1. Smart Schema Inference</div>
+          <p class="text-slate-400">Employs linguistic heuristics and cardinality analysis to identify Customer IDs, Target Labels, Financial Revenue, Inactivity windows, and Ticket counts.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="font-bold text-white text-sm">2. Dynamic Model Training</div>
+          <p class="text-slate-400">Trains Gradient Boosting and Random Forest ensembles on the fly, performing train/test split, scaling, imputation, and feature importance weighting.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+          <div class="font-bold text-white text-sm">3. Root-Cause Explainability</div>
+          <p class="text-slate-400">Translates complex feature deviations into human-readable early warning reasons (e.g., <em>"Seat utilization dropped by 45%"</em>) paired with actionable playbooks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Key Features Demonstrated -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+        <span class="text-emerald-400">03.</span>
+        <span>Key Features & User Experience</span>
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="text-indigo-400 font-bold text-sm mb-1">Interactive Risk Leaderboard</div>
+          <p class="text-slate-400">Real-time filtering by Critical, At-Risk, and Healthy tiers. Color-coded probability gauges and instant MRR-at-risk aggregation.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="text-indigo-400 font-bold text-sm mb-1">14-Day Activity Sparklines</div>
+          <p class="text-slate-400">Interactive Chart.js telemetry charts displaying daily active events to pinpoint the exact date when team engagement began to decline.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="text-indigo-400 font-bold text-sm mb-1">Targeted Retention Playbooks</div>
+          <p class="text-slate-400">One-click playbook execution (Executive Sponsor Outreach, Team Onboarding Workshops, Renewal Discounts) with audit logs.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="text-indigo-400 font-bold text-sm mb-1">What-If Behavioral Simulator</div>
+          <p class="text-slate-400">Interactive live sliders allowing account managers to simulate how improving seat adoption or resolving tickets reduces churn probability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Resume-Ready Section -->
+    <section class="space-y-4">
+      <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+        <span class="text-amber-400">04.</span>
+        <span>Resume & CV Highlights (Copy & Paste Ready)</span>
+      </h2>
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-3 code-font text-xs text-slate-300">
+        <div class="text-indigo-400 font-bold text-sm">ChurnGuard AI — Full-Stack ML Engineer & Developer</div>
+        <ul class="space-y-2 list-disc list-inside text-slate-300">
+          <li>Architected and deployed an end-to-end Customer Churn Prediction platform featuring an automated ML pipeline that accepts arbitrary company CSV datasets with zero manual schema preprocessing.</li>
+          <li>Engineered Gradient Boosting and Random Forest classifiers achieving <strong>0.912 ROC-AUC</strong> and <strong>88.5% accuracy</strong>, computing individual customer health scores (0-100) and churn probabilities.</li>
+          <li>Developed dynamic explainability algorithms that analyze individual feature deviations against cohort baselines to surface top root causes behind customer inactivity.</li>
+          <li>Constructed a responsive, glassmorphic analytics dashboard with Chart.js telemetry visualizations, 1-click retention playbooks, and a live "What-If" behavioral simulation engine.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. Links & Contact -->
+    <section class="p-6 rounded-2xl bg-gradient-to-r from-indigo-950/60 to-slate-900 border border-indigo-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <h3 class="text-base font-bold text-white">Explore the Source Code & Documentation</h3>
+        <p class="text-xs text-slate-400 mt-1">Available under the MIT license on GitHub.</p>
+      </div>
+      <div class="flex items-center space-x-3">
+        <a href="https://github.com/tamballesachin7-star/churnguard" target="_blank" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition flex items-center space-x-2">
+          <span>View on GitHub</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-900 py-6 text-center text-xs text-slate-500">
+    Designed & Built by Sachin • Powered by ChurnGuard AI
+  </footer>
+
+</body>
+</html>
