@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChurnGuard AI - Universal Customer Churn & Retention Intelligence</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen antialiased flex flex-col selection:bg-indigo-500 selection:text-white">
+
+  <!-- Top Navigation Bar -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo & Branding -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-violet-500 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-bold text-lg tracking-tight text-white">ChurnGuard<span class="text-indigo-400">AI</span></span>
+            <span class="text-[10px] uppercase font-semibold tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Universal Engine</span>
+          </div>
+          <p class="text-xs text-slate-400 hidden sm:block">Predictive Churn Prevention & Early Warning Intelligence</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-3">
+        <!-- Quick Sample Switcher -->
+        <div class="hidden md:flex items-center bg-slate-800/80 rounded-lg p-1 border border-slate-700/60 text-xs">
+          <button id="sample-b2b-btn" onclick="loadSampleDataset('b2b_saas')" class="px-3 py-1.5 rounded-md font-medium text-slate-300 hover:text-white transition-all bg-indigo-600 text-white shadow">B2B SaaS</button>
+          <button id="sample-telco-btn" onclick="loadSampleDataset('telco')" class="px-3 py-1.5 rounded-md font-medium text-slate-400 hover:text-white transition-all">Telco / Subscriptions</button>
+        </div>
+
+        <!-- Open Simulator Button -->
+        <button onclick="openSimulatorModal()" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center space-x-2">
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span>What-If Simulator</span>
+        </button>
+
+        <!-- Upload Any Dataset Button -->
+        <button onclick="openUploadModal()" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white shadow-lg shadow-indigo-500/20 transition flex items-center space-x-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+          <span>Upload Any Dataset</span>
+        </button>
+
+        <!-- Export CSV Button -->
+        <a href="/api/export" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition" title="Export Scored Dataset (CSV)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+    <!-- Active Dataset Banner -->
+    <div id="dataset-banner" class="bg-gradient-to-r from-indigo-950/60 via-slate-900 to-slate-900 border border-indigo-500/20 rounded-2xl p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xs uppercase font-bold text-slate-400 tracking-wider">Active Workspace Dataset:</span>
+            <span id="active-dataset-name" class="text-sm font-semibold text-white">B2B SaaS Cloud Subscriptions</span>
+          </div>
+          <div class="text-xs text-slate-400 flex items-center space-x-4 mt-0.5" id="dataset-schema-summary">
+            <span>Customer ID: <strong class="text-slate-200" id="schema-id-col">Account_Name</strong></span>
+            <span>•</span>
+            <span>Target: <strong class="text-emerald-400" id="schema-target-col">Churn (Trained Model)</strong></span>
+            <span>•</span>
+            <span>Revenue Col: <strong class="text-slate-200" id="schema-rev-col">Monthly_Recurring_Revenue</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3">
+        <span class="text-xs text-slate-400">Model Accuracy: <strong class="text-emerald-400 text-sm" id="stat-model-acc">84.0%</strong></span>
+        <button onclick="openUploadModal()" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium underline">Switch Dataset</button>
+      </div>
+    </div>
+
+    <!-- KPI Metric Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- Monitored Accounts -->
+      <div class="kpi-card bg-slate-900/70 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
+        <div class="flex items-center justify-between text-slate-400 text-xs font-medium uppercase tracking-wider">
+          <span>Monitored Accounts</span>
+          <span class="p-1.5 rounded-lg bg-slate-800 text-indigo-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </span>
+        </div>
+        <div class="mt-3 flex items-baseline space-x-2">
+          <span id="stat-total-accounts" class="text-3xl font-extrabold text-white tracking-tight">--</span>
+          <span class="text-xs text-emerald-400 font-medium">100% Ingested</span>
+        </div>
+        <div class="mt-2 text-xs text-slate-400 flex items-center justify-between">
+          <span>Active in Telemetry</span>
+          <span class="text-slate-300 font-mono" id="stat-healthy-pct">--</span>
+        </div>
+      </div>
+
+      <!-- Total Pipeline MRR -->
+      <div class="kpi-card bg-slate-900/70 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
+        <div class="flex items-center justify-between text-slate-400 text-xs font-medium uppercase tracking-wider">
+          <span>Total Monitored Revenue</span>
+          <span class="p-1.5 rounded-lg bg-slate-800 text-emerald-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </span>
+        </div>
+        <div class="mt-3 flex items-baseline space-x-2">
+          <span id="stat-total-mrr" class="text-3xl font-extrabold text-white tracking-tight">$--</span>
+          <span class="text-xs text-slate-400 font-normal">MRR</span>
+        </div>
+        <div class="mt-2 text-xs text-slate-400 flex items-center justify-between">
+          <span>Annual Run Rate (ARR)</span>
+          <span class="text-slate-300 font-mono" id="stat-total-arr">$--</span>
+        </div>
+      </div>
+
+      <!-- MRR at Churn Risk -->
+      <div class="kpi-card bg-slate-900/70 border border-rose-900/30 bg-gradient-to-br from-slate-900 to-rose-950/20 rounded-2xl p-5 hover:border-rose-700/50 transition">
+        <div class="flex items-center justify-between text-rose-300 text-xs font-medium uppercase tracking-wider">
+          <span>Revenue at Risk</span>
+          <span class="p-1.5 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </span>
+        </div>
+        <div class="mt-3 flex items-baseline space-x-2">
+          <span id="stat-at-risk-mrr" class="text-3xl font-extrabold text-rose-400 tracking-tight">$--</span>
+          <span id="stat-risk-mrr-pct" class="text-xs font-bold px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30">--%</span>
+        </div>
+        <div class="mt-2 text-xs text-slate-400 flex items-center justify-between">
+          <span>Immediate Churn Exposure</span>
+          <span class="text-rose-400 font-medium">Urgent Action Required</span>
+        </div>
+      </div>
+
+      <!-- Critical Churn Accounts -->
+      <div class="kpi-card bg-slate-900/70 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
+        <div class="flex items-center justify-between text-slate-400 text-xs font-medium uppercase tracking-wider">
+          <span>High Risk Accounts</span>
+          <span class="p-1.5 rounded-lg bg-slate-800 text-amber-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </span>
+        </div>
+        <div class="mt-3 flex items-baseline space-x-2">
+          <span id="stat-critical-count" class="text-3xl font-extrabold text-amber-400 tracking-tight">--</span>
+          <span class="text-xs text-slate-400">Critical / In Danger</span>
+        </div>
+        <div class="mt-2 text-xs text-slate-400 flex items-center justify-between">
+          <span>Warning Stage</span>
+          <span class="text-amber-300 font-medium" id="stat-warning-count">-- Accounts</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts & Analytics Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Risk Distribution Doughnut Chart -->
+      <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider">Client Health Distribution</h3>
+            <span class="text-xs text-slate-400">By Churn Probability</span>
+          </div>
+          <div class="relative h-56 flex items-center justify-center">
+            <canvas id="healthDonutChart"></canvas>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-4 text-center border-t border-slate-800 pt-4 text-xs">
+          <div>
+            <div class="text-rose-400 font-bold text-base" id="donut-crit-val">--</div>
+            <div class="text-slate-400 text-[11px]">Critical (>65%)</div>
+          </div>
+          <div>
+            <div class="text-amber-400 font-bold text-base" id="donut-risk-val">--</div>
+            <div class="text-slate-400 text-[11px]">Warning (35-65%)</div>
+          </div>
+          <div>
+            <div class="text-emerald-400 font-bold text-base" id="donut-healthy-val">--</div>
+            <div class="text-slate-400 text-[11px]">Healthy (&lt;35%)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Importance / Key Risk Signals -->
+      <div class="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 lg:col-span-2 flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider">Primary Churn Predictor Drivers</h3>
+            <p class="text-xs text-slate-400 mt-0.5">Top behavioral features weighted by the machine learning model</p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono">AutoML Importance</span>
+        </div>
+        <div class="relative h-56">
+          <canvas id="featuresBarChart"></canvas>
+        </div>
+        <div class="mt-4 border-t border-slate-800 pt-3 flex items-center justify-between text-xs text-slate-400">
+          <span>AI Insight: Inactivity velocity and license under-utilization trigger the highest risk weights.</span>
+          <button onclick="openSimulatorModal()" class="text-indigo-400 hover:text-indigo-300 font-medium">Test in Simulator &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customer Retention Leaderboard -->
+    <div class="bg-slate-900/70 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+      <!-- Leaderboard Header & Filters -->
+      <div class="p-5 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h2 class="text-lg font-bold text-white tracking-tight">Customer Retention Leaderboard</h2>
+          <p class="text-xs text-slate-400">Live predictive scoring of accounts sorted by churn vulnerability</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Search Input -->
+          <div class="relative">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="search-input" oninput="filterAccounts()" placeholder="Search accounts or ID..." class="bg-slate-800 text-xs text-slate-200 placeholder-slate-400 rounded-lg pl-9 pr-4 py-2 border border-slate-700 focus:outline-none focus:border-indigo-500 w-48 sm:w-64">
+          </div>
+
+          <!-- Risk Level Filter Tabs -->
+          <div class="flex bg-slate-800 rounded-lg p-1 border border-slate-700/80 text-xs">
+            <button onclick="setFilter('all')" id="filter-all" class="filter-tab px-3 py-1 rounded-md font-medium text-white bg-indigo-600 transition">All</button>
+            <button onclick="setFilter('Critical')" id="filter-critical" class="filter-tab px-3 py-1 rounded-md font-medium text-slate-400 hover:text-white transition">Critical</button>
+            <button onclick="setFilter('At Risk')" id="filter-at-risk" class="filter-tab px-3 py-1 rounded-md font-medium text-slate-400 hover:text-white transition">At Risk</button>
+            <button onclick="setFilter('Healthy')" id="filter-healthy" class="filter-tab px-3 py-1 rounded-md font-medium text-slate-400 hover:text-white transition">Healthy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accounts Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-950/60 text-slate-400 uppercase font-semibold text-[11px] border-b border-slate-800">
+            <tr>
+              <th class="py-3.5 px-4">Client / Account Name</th>
+              <th class="py-3.5 px-4 cursor-pointer hover:text-white transition" onclick="toggleSort('mrr')">
+                Revenue (MRR) <span id="sort-mrr-icon">↕</span>
+              </th>
+              <th class="py-3.5 px-4 cursor-pointer hover:text-white transition" onclick="toggleSort('health')">
+                Health Score <span id="sort-health-icon">↕</span>
+              </th>
+              <th class="py-3.5 px-4 cursor-pointer hover:text-white transition" onclick="toggleSort('churn')">
+                Predicted Churn Risk <span id="sort-churn-icon">↓</span>
+              </th>
+              <th class="py-3.5 px-4">AI Early Warning Reason</th>
+              <th class="py-3.5 px-4 text-right">Intervention</th>
+            </tr>
+          </thead>
+          <tbody id="accounts-table-body" class="divide-y divide-slate-800/60">
+            <!-- Rendered dynamically by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table Footer / Count -->
+      <div class="p-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+        <span id="showing-count-text">Showing 0 accounts</span>
+        <div class="flex items-center space-x-2">
+          <span>Sort: Highest Churn Probability</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Upload Any Dataset Modal -->
+  <div id="upload-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative space-y-5 animate-in">
+      <button onclick="closeUploadModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div>
+        <h3 class="text-lg font-bold text-white tracking-tight">Upload Any Company Dataset</h3>
+        <p class="text-xs text-slate-400 mt-1">Upload any customer dataset (CSV format). The AI will auto-detect columns, analyze churn signals, and train a customized model.</p>
+      </div>
+
+      <!-- Dropzone -->
+      <div id="dropzone" class="border-2 border-dashed border-slate-700 hover:border-indigo-500 rounded-xl p-8 text-center cursor-pointer transition bg-slate-800/40">
+        <input type="file" id="file-input" accept=".csv" class="hidden" onchange="handleFileSelected(this.files[0])">
+        <div class="flex flex-col items-center space-y-3">
+          <div class="w-12 h-12 rounded-full bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+          </div>
+          <div>
+            <span class="text-sm font-semibold text-white">Click to browse or drop CSV here</span>
+            <p class="text-xs text-slate-400 mt-0.5">Supports any customer telemetry, CRM export, or subscription data</p>
+          </div>
+          <span class="text-[11px] font-mono text-slate-400 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">Auto-detects: ID, Churn Label, Inactivity, Revenue, Usage</span>
+        </div>
+      </div>
+
+      <!-- Upload Progress or File Status -->
+      <div id="upload-status" class="hidden text-xs p-3 rounded-lg bg-indigo-950/60 border border-indigo-500/30 text-indigo-200 flex items-center justify-between">
+        <span id="upload-status-text">Processing dataset with AutoML...</span>
+        <div class="w-4 h-4 border-2 border-indigo-400 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <div class="text-xs text-slate-400">
+          Or try: <a href="javascript:void(0)" onclick="loadSampleDataset('telco'); closeUploadModal();" class="text-indigo-400 underline">Telco Subscriptions (150 rows)</a>
+        </div>
+        <button onclick="closeUploadModal()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Customer Diagnostic & Playbook Drawer / Modal -->
+  <div id="customer-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto">
+      <button onclick="closeCustomerModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Customer Title & Health Overview -->
+      <div class="flex items-start justify-between pr-8">
+        <div>
+          <div class="flex items-center space-x-2">
+            <h2 id="modal-cust-name" class="text-xl font-bold text-white tracking-tight">--</h2>
+            <span id="modal-cust-risk-badge" class="text-xs px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">--</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-1">Monthly Recurring Revenue: <strong class="text-white font-mono" id="modal-cust-mrr">$--</strong></p>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-slate-400 uppercase font-semibold">Health Score</div>
+          <div class="text-3xl font-extrabold text-white" id="modal-cust-health">--</div>
+        </div>
+      </div>
+
+      <!-- Activity Velocity 14-Day Trend Chart -->
+      <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-semibold uppercase text-slate-300">14-Day Activity Velocity Trend</span>
+          <span class="text-[11px] text-slate-400">Events / Active Interactions</span>
+        </div>
+        <div class="h-36">
+          <canvas id="customerTrendChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Why is this customer predicted to churn? (Explainability) -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center space-x-2">
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>AI Churn Risk Diagnostics & Root Causes</span>
+        </h4>
+        <div id="modal-cust-reasons" class="space-y-2">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Actionable Retention Playbooks -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center space-x-2">
+          <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Recommended Retention Playbooks</span>
+        </h4>
+        <div id="modal-cust-playbooks" class="space-y-2">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Raw Metrics Accordion -->
+      <details class="bg-slate-950/40 rounded-xl border border-slate-800 text-xs">
+        <summary class="p-3 cursor-pointer text-slate-400 hover:text-white font-medium">View Raw Customer Telemetry Attributes</summary>
+        <div id="modal-raw-metrics" class="p-3 pt-0 grid grid-cols-2 sm:grid-cols-3 gap-2 border-t border-slate-800 text-slate-300 font-mono text-[11px]">
+          <!-- Populated dynamically -->
+        </div>
+      </details>
+
+      <div class="flex justify-end pt-2">
+        <button onclick="closeCustomerModal()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- What-If Live Simulator Modal -->
+  <div id="simulator-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full p-6 shadow-2xl relative space-y-6">
+      <button onclick="closeSimulatorModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div>
+        <h3 class="text-lg font-bold text-white tracking-tight flex items-center space-x-2">
+          <span class="text-amber-400">⚡</span>
+          <span>Live "What-If" Churn Risk Simulator</span>
+        </h3>
+        <p class="text-xs text-slate-400 mt-1">Adjust client behavioral variables below to see the AI recalculate churn probability and health in real time.</p>
+      </div>
+
+      <!-- Real-time Prediction Output Meter -->
+      <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-5 flex items-center justify-between">
+        <div>
+          <span class="text-xs text-slate-400 uppercase font-semibold">Predicted Churn Probability</span>
+          <div class="text-3xl font-extrabold text-white mt-1" id="sim-prob-output">24.5%</div>
+          <span id="sim-risk-badge" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Healthy</span>
+        </div>
+        <div class="text-right">
+          <span class="text-xs text-slate-400 uppercase font-semibold">Health Score</span>
+          <div class="text-3xl font-extrabold text-emerald-400 mt-1" id="sim-health-output">75 / 100</div>
+          <span class="text-xs text-slate-400">Calculated by Model</span>
+        </div>
+      </div>
+
+      <!-- Interactive Sliders -->
+      <div class="space-y-4 text-xs">
+        <div>
+          <div class="flex justify-between text-slate-300 font-medium mb-1">
+            <span>Seat Utilization:</span>
+            <span class="font-mono text-indigo-400" id="val-sim-seat">65%</span>
+          </div>
+          <input type="range" id="sim-seat" min="5" max="100" value="65" oninput="runLiveSimulation()" class="w-full accent-indigo-500">
+        </div>
+
+        <div>
+          <div class="flex justify-between text-slate-300 font-medium mb-1">
+            <span>Days Since Last Login:</span>
+            <span class="font-mono text-indigo-400" id="val-sim-login">3 days</span>
+          </div>
+          <input type="range" id="sim-login" min="0" max="40" value="3" oninput="runLiveSimulation()" class="w-full accent-indigo-500">
+        </div>
+
+        <div>
+          <div class="flex justify-between text-slate-300 font-medium mb-1">
+            <span>30-Day Activity Velocity:</span>
+            <span class="font-mono text-indigo-400" id="val-sim-decay">-10%</span>
+          </div>
+          <input type="range" id="sim-decay" min="-90" max="50" value="-10" oninput="runLiveSimulation()" class="w-full accent-indigo-500">
+        </div>
+
+        <div>
+          <div class="flex justify-between text-slate-300 font-medium mb-1">
+            <span>Days Until Contract Renewal:</span>
+            <span class="font-mono text-indigo-400" id="val-sim-renewal">120 days</span>
+          </div>
+          <input type="range" id="sim-renewal" min="5" max="365" value="120" oninput="runLiveSimulation()" class="w-full accent-indigo-500">
+        </div>
+
+        <div>
+          <div class="flex justify-between text-slate-300 font-medium mb-1">
+            <span>Unresolved Support Tickets:</span>
+            <span class="font-mono text-indigo-400" id="val-sim-tickets">1 ticket</span>
+          </div>
+          <input type="range" id="sim-tickets" min="0" max="6" value="1" oninput="runLiveSimulation()" class="w-full accent-indigo-500">
+        </div>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button onclick="closeSimulatorModal()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-400">
+    <span>ChurnGuard AI • Universal Customer Retention & Predictive Churn Intelligence System</span>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

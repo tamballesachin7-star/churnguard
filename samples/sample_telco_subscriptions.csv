@@ -1,0 +1,151 @@
+CustomerID,Tenure_Months,Contract,MonthlyCharges,TotalCharges,TechSupport,PaperlessBilling,PaymentMethod,Churn
+TELCO-1000,20,Month-to-month,55.95,1119.0,No,No,Bank transfer,Yes
+TELCO-1001,24,Month-to-month,107.2,2572.8,No,Yes,Electronic check,Yes
+TELCO-1002,61,Month-to-month,29.88,1822.68,Yes,No,Credit card,No
+TELCO-1003,41,Month-to-month,26.24,1075.84,No,No,Credit card,Yes
+TELCO-1004,42,Month-to-month,80.68,3388.56,No,No,Electronic check,No
+TELCO-1005,58,Two year,35.94,2084.52,No,No,Bank transfer,Yes
+TELCO-1006,8,Two year,105.41,843.28,Yes,Yes,Bank transfer,Yes
+TELCO-1007,2,Two year,80.51,161.02,No,Yes,Mailed check,No
+TELCO-1008,49,Month-to-month,90.44,4431.56,Yes,Yes,Mailed check,No
+TELCO-1009,15,Two year,61.5,922.5,Yes,Yes,Bank transfer,No
+TELCO-1010,20,Month-to-month,54.42,1088.4,No,Yes,Electronic check,No
+TELCO-1011,10,One year,45.56,455.6,Yes,Yes,Mailed check,No
+TELCO-1012,31,Two year,81.68,2532.08,Yes,No,Electronic check,No
+TELCO-1013,37,Two year,57.44,2125.28,No,Yes,Mailed check,No
+TELCO-1014,53,Month-to-month,90.0,4770.0,Yes,Yes,Bank transfer,No
+TELCO-1015,21,One year,78.22,1642.62,Yes,Yes,Credit card,No
+TELCO-1016,10,Month-to-month,56.4,564.0,No,Yes,Credit card,Yes
+TELCO-1017,44,Month-to-month,101.61,4470.84,No,Yes,Bank transfer,Yes
+TELCO-1018,53,Two year,78.82,4177.46,No,Yes,Credit card,No
+TELCO-1019,68,Two year,39.94,2715.92,Yes,No,Bank transfer,No
+TELCO-1020,4,Month-to-month,77.7,310.8,Yes,No,Mailed check,Yes
+TELCO-1021,50,One year,40.81,2040.5,No,Yes,Electronic check,No
+TELCO-1022,53,One year,25.55,1354.15,Yes,No,Credit card,No
+TELCO-1023,11,Two year,58.24,640.64,Yes,No,Bank transfer,No
+TELCO-1024,59,Month-to-month,31.68,1869.12,No,No,Mailed check,No
+TELCO-1025,10,Month-to-month,48.83,488.3,No,No,Bank transfer,Yes
+TELCO-1026,68,Month-to-month,110.12,7488.16,No,No,Electronic check,Yes
+TELCO-1027,11,Month-to-month,99.09,1089.99,No,Yes,Bank transfer,No
+TELCO-1028,10,One year,74.55,745.5,No,No,Bank transfer,No
+TELCO-1029,71,Two year,63.02,4474.42,Yes,Yes,Bank transfer,No
+TELCO-1030,70,Month-to-month,82.49,5774.3,No,Yes,Bank transfer,No
+TELCO-1031,38,Month-to-month,117.11,4450.18,Yes,Yes,Bank transfer,Yes
+TELCO-1032,23,Two year,59.84,1376.32,Yes,No,Credit card,No
+TELCO-1033,4,Month-to-month,50.6,202.4,No,Yes,Mailed check,Yes
+TELCO-1034,19,Two year,98.93,1879.67,No,Yes,Bank transfer,Yes
+TELCO-1035,24,Two year,69.04,1656.96,No,No,Bank transfer,No
+TELCO-1036,43,Month-to-month,91.49,3934.07,No,Yes,Mailed check,Yes
+TELCO-1037,47,Month-to-month,101.33,4762.51,No,No,Mailed check,Yes
+TELCO-1038,59,Month-to-month,111.73,6592.07,No,No,Credit card,No
+TELCO-1039,40,Month-to-month,83.56,3342.4,No,Yes,Credit card,No
+TELCO-1040,13,Month-to-month,42.2,548.6,No,Yes,Credit card,Yes
+TELCO-1041,24,Month-to-month,107.27,2574.48,Yes,Yes,Mailed check,No
+TELCO-1042,46,Two year,85.62,3938.52,Yes,Yes,Credit card,No
+TELCO-1043,52,One year,107.98,5614.96,Yes,Yes,Electronic check,No
+TELCO-1044,54,Month-to-month,94.3,5092.2,No,No,Bank transfer,Yes
+TELCO-1045,8,Month-to-month,105.15,841.2,Yes,Yes,Mailed check,No
+TELCO-1046,59,Month-to-month,44.87,2647.33,No,No,Mailed check,No
+TELCO-1047,30,Two year,48.47,1454.1,No,No,Bank transfer,No
+TELCO-1048,64,Two year,59.04,3778.56,Yes,Yes,Mailed check,No
+TELCO-1049,54,Month-to-month,52.54,2837.16,No,No,Credit card,No
+TELCO-1050,27,Month-to-month,62.1,1676.7,No,Yes,Electronic check,Yes
+TELCO-1051,29,One year,34.83,1010.07,No,No,Bank transfer,No
+TELCO-1052,54,Month-to-month,89.14,4813.56,Yes,No,Bank transfer,No
+TELCO-1053,5,Month-to-month,99.85,499.25,Yes,Yes,Mailed check,Yes
+TELCO-1054,8,One year,111.27,890.16,No,No,Electronic check,No
+TELCO-1055,4,Month-to-month,38.96,155.84,No,Yes,Electronic check,Yes
+TELCO-1056,29,Two year,42.28,1226.12,Yes,No,Mailed check,No
+TELCO-1057,7,Two year,51.45,360.15,No,Yes,Bank transfer,No
+TELCO-1058,55,Month-to-month,84.29,4635.95,Yes,Yes,Credit card,Yes
+TELCO-1059,27,Month-to-month,96.69,2610.63,Yes,No,Bank transfer,Yes
+TELCO-1060,39,Month-to-month,107.11,4177.29,Yes,Yes,Credit card,Yes
+TELCO-1061,48,Month-to-month,104.19,5001.12,No,Yes,Electronic check,No
+TELCO-1062,30,Month-to-month,54.08,1622.4,Yes,No,Bank transfer,Yes
+TELCO-1063,52,Month-to-month,74.32,3864.64,No,No,Credit card,No
+TELCO-1064,54,One year,35.76,1931.04,Yes,No,Bank transfer,No
+TELCO-1065,35,Month-to-month,50.52,1768.2,No,Yes,Mailed check,Yes
+TELCO-1066,61,One year,87.25,5322.25,No,No,Electronic check,No
+TELCO-1067,21,Month-to-month,56.43,1185.03,No,No,Credit card,Yes
+TELCO-1068,52,Two year,49.22,2559.44,No,No,Credit card,No
+TELCO-1069,71,One year,43.19,3066.49,No,Yes,Credit card,No
+TELCO-1070,43,One year,42.4,1823.2,No,No,Mailed check,No
+TELCO-1071,17,Month-to-month,34.01,578.17,Yes,Yes,Bank transfer,No
+TELCO-1072,59,One year,62.3,3675.7,Yes,Yes,Credit card,No
+TELCO-1073,67,Two year,48.46,3246.82,No,Yes,Electronic check,No
+TELCO-1074,54,Two year,55.33,2987.82,No,Yes,Bank transfer,No
+TELCO-1075,54,Month-to-month,39.17,2115.18,No,No,Bank transfer,No
+TELCO-1076,7,One year,48.29,338.03,Yes,Yes,Electronic check,No
+TELCO-1077,37,Month-to-month,116.58,4313.46,No,Yes,Credit card,No
+TELCO-1078,27,One year,84.02,2268.54,Yes,Yes,Credit card,No
+TELCO-1079,62,Two year,31.75,1968.5,Yes,No,Credit card,No
+TELCO-1080,54,Two year,34.88,1883.52,Yes,No,Credit card,Yes
+TELCO-1081,63,Month-to-month,92.22,5809.86,No,Yes,Bank transfer,Yes
+TELCO-1082,2,Month-to-month,97.37,194.74,No,Yes,Credit card,Yes
+TELCO-1083,51,Month-to-month,67.07,3420.57,No,Yes,Bank transfer,No
+TELCO-1084,49,Two year,47.02,2303.98,Yes,Yes,Credit card,No
+TELCO-1085,20,Month-to-month,106.67,2133.4,Yes,Yes,Mailed check,Yes
+TELCO-1086,9,Two year,70.6,635.4,No,Yes,Mailed check,Yes
+TELCO-1087,66,Month-to-month,87.14,5751.24,Yes,No,Bank transfer,Yes
+TELCO-1088,67,One year,88.68,5941.56,Yes,Yes,Credit card,No
+TELCO-1089,55,Month-to-month,52.81,2904.55,No,Yes,Mailed check,Yes
+TELCO-1090,47,Month-to-month,60.1,2824.7,No,No,Credit card,No
+TELCO-1091,27,Month-to-month,28.38,766.26,No,Yes,Electronic check,Yes
+TELCO-1092,68,Month-to-month,53.88,3663.84,Yes,No,Electronic check,No
+TELCO-1093,52,Month-to-month,51.67,2686.84,Yes,No,Electronic check,No
+TELCO-1094,1,Month-to-month,58.39,58.39,Yes,Yes,Bank transfer,No
+TELCO-1095,32,One year,101.52,3248.64,Yes,Yes,Electronic check,No
+TELCO-1096,9,One year,99.44,894.96,No,No,Bank transfer,No
+TELCO-1097,61,Two year,26.35,1607.35,No,No,Bank transfer,No
+TELCO-1098,10,One year,99.48,994.8,No,Yes,Bank transfer,No
+TELCO-1099,11,Two year,52.35,575.85,Yes,Yes,Electronic check,No
+TELCO-1100,17,Month-to-month,53.88,915.96,No,No,Credit card,Yes
+TELCO-1101,4,One year,94.41,377.64,Yes,Yes,Bank transfer,No
+TELCO-1102,6,Two year,48.21,289.26,No,Yes,Mailed check,No
+TELCO-1103,10,One year,103.13,1031.3,No,Yes,Electronic check,No
+TELCO-1104,22,Two year,37.23,819.06,No,Yes,Bank transfer,No
+TELCO-1105,25,Month-to-month,75.37,1884.25,No,No,Mailed check,Yes
+TELCO-1106,4,Month-to-month,57.7,230.8,Yes,Yes,Electronic check,No
+TELCO-1107,36,Month-to-month,97.23,3500.28,Yes,Yes,Mailed check,Yes
+TELCO-1108,45,Month-to-month,96.76,4354.2,Yes,No,Mailed check,Yes
+TELCO-1109,32,Month-to-month,99.57,3186.24,No,No,Credit card,Yes
+TELCO-1110,39,One year,95.57,3727.23,No,Yes,Electronic check,No
+TELCO-1111,6,Month-to-month,39.03,234.18,No,Yes,Electronic check,No
+TELCO-1112,57,One year,53.32,3039.24,No,Yes,Bank transfer,No
+TELCO-1113,55,Two year,65.94,3626.7,Yes,No,Credit card,No
+TELCO-1114,36,Month-to-month,54.9,1976.4,No,Yes,Mailed check,Yes
+TELCO-1115,36,One year,101.68,3660.48,No,Yes,Electronic check,Yes
+TELCO-1116,13,Month-to-month,106.52,1384.76,Yes,No,Credit card,Yes
+TELCO-1117,66,Two year,60.92,4020.72,No,No,Mailed check,No
+TELCO-1118,19,Two year,108.87,2068.53,No,Yes,Mailed check,Yes
+TELCO-1119,57,Month-to-month,103.36,5891.52,No,Yes,Credit card,Yes
+TELCO-1120,18,Month-to-month,86.05,1548.9,No,Yes,Credit card,Yes
+TELCO-1121,15,One year,26.89,403.35,Yes,Yes,Mailed check,No
+TELCO-1122,48,One year,80.14,3846.72,No,Yes,Electronic check,No
+TELCO-1123,34,Month-to-month,27.9,948.6,Yes,Yes,Credit card,Yes
+TELCO-1124,42,Month-to-month,110.07,4622.94,No,Yes,Electronic check,No
+TELCO-1125,58,Month-to-month,59.6,3456.8,No,Yes,Bank transfer,No
+TELCO-1126,37,One year,54.09,2001.33,No,Yes,Electronic check,No
+TELCO-1127,64,One year,78.03,4993.92,No,Yes,Mailed check,No
+TELCO-1128,17,Two year,106.77,1815.09,Yes,No,Mailed check,No
+TELCO-1129,68,One year,73.73,5013.64,No,Yes,Mailed check,No
+TELCO-1130,13,Month-to-month,49.97,649.61,No,Yes,Credit card,No
+TELCO-1131,21,Month-to-month,97.41,2045.61,Yes,Yes,Bank transfer,No
+TELCO-1132,38,Month-to-month,49.43,1878.34,No,Yes,Electronic check,No
+TELCO-1133,54,Month-to-month,66.73,3603.42,Yes,Yes,Credit card,No
+TELCO-1134,46,Month-to-month,29.26,1345.96,No,No,Electronic check,No
+TELCO-1135,39,One year,83.5,3256.5,No,Yes,Mailed check,No
+TELCO-1136,20,Month-to-month,92.78,1855.6,Yes,Yes,Mailed check,Yes
+TELCO-1137,58,Two year,95.46,5536.68,No,Yes,Credit card,No
+TELCO-1138,58,Month-to-month,76.45,4434.1,No,Yes,Bank transfer,No
+TELCO-1139,7,Month-to-month,56.63,396.41,No,No,Electronic check,Yes
+TELCO-1140,44,One year,94.13,4141.72,Yes,No,Bank transfer,No
+TELCO-1141,25,Month-to-month,31.95,798.75,No,No,Bank transfer,Yes
+TELCO-1142,69,Month-to-month,111.85,7717.65,No,Yes,Electronic check,Yes
+TELCO-1143,11,Two year,115.51,1270.61,Yes,Yes,Mailed check,No
+TELCO-1144,47,Two year,62.13,2920.11,Yes,No,Electronic check,No
+TELCO-1145,59,Two year,65.36,3856.24,No,Yes,Credit card,No
+TELCO-1146,24,Month-to-month,102.72,2465.28,Yes,Yes,Electronic check,Yes
+TELCO-1147,57,Two year,80.06,4563.42,No,No,Credit card,No
+TELCO-1148,62,One year,49.26,3054.12,Yes,Yes,Mailed check,No
+TELCO-1149,2,Two year,97.46,194.92,No,No,Credit card,No
